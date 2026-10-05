@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
@@ -46,8 +47,9 @@ const sizes: Record<Size, string> = {
 };
 
 /**
- * Renders a <button>, or an <a> when `href` is given. External links get
- * `target="_blank"` and a safe `rel` automatically.
+ * Renders a <button>, a Next.js <Link> for internal routes (prefetched), or
+ * an <a> for hashes and external URLs. External links get `target="_blank"`
+ * and a safe `rel` automatically.
  */
 export function Button(props: ButtonProps) {
   const { variant = "primary", size = "md", className, children, ...rest } = props;
@@ -58,6 +60,15 @@ export function Button(props: ButtonProps) {
       href: string;
     };
     const external = /^https?:\/\//.test(href) || href.startsWith("mailto:");
+    const internalRoute = href.startsWith("/");
+
+    if (internalRoute) {
+      return (
+        <Link href={href} className={classes} {...anchorRest}>
+          {children}
+        </Link>
+      );
+    }
     return (
       <a
         href={href}

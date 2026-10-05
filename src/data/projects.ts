@@ -1,4 +1,10 @@
 import type { Project, ProjectTag } from "@/lib/types";
+import { demoPath, site } from "@/lib/site";
+
+const source = (dir: string) => ({
+  label: "Source",
+  href: `${site.repoUrl}/tree/HEAD/${dir}`,
+});
 
 export const projects: Project[] = [
   {
@@ -18,8 +24,8 @@ export const projects: Project[] = [
     featured: true,
     gradient: ["#7c3aed", "#06b6d4"],
     links: [
-      { label: "Live demo", href: "https://example.com/pulse" },
-      { label: "Source", href: "https://github.com/ToContactSaksham" },
+      { label: "Live demo", href: demoPath("pulse-dashboard") },
+      source("src/components/demos/pulse"),
     ],
     metrics: [
       { label: "LCP", value: "0.9s" },
@@ -44,8 +50,8 @@ export const projects: Project[] = [
     featured: true,
     gradient: ["#db2777", "#f59e0b"],
     links: [
-      { label: "Storybook", href: "https://example.com/aurora" },
-      { label: "Source", href: "https://github.com/ToContactSaksham" },
+      { label: "Live demo", href: demoPath("aurora-ui") },
+      source("src/components/demos/aurora"),
     ],
     metrics: [
       { label: "Components", value: "48" },
@@ -70,8 +76,8 @@ export const projects: Project[] = [
     featured: true,
     gradient: ["#0ea5e9", "#22c55e"],
     links: [
-      { label: "Live", href: "https://example.com/kinetic" },
-      { label: "Source", href: "https://github.com/ToContactSaksham" },
+      { label: "Live demo", href: demoPath("kinetic-landing") },
+      source("public/demos/kinetic"),
     ],
     metrics: [
       { label: "Transfer", value: "23kb" },
@@ -96,7 +102,8 @@ export const projects: Project[] = [
     featured: false,
     gradient: ["#f97316", "#ef4444"],
     links: [
-      { label: "Case study", href: "https://example.com/shelf" },
+      { label: "Live demo", href: demoPath("shelf-commerce") },
+      source("src/components/demos/shelf"),
     ],
     metrics: [
       { label: "Conversion", value: "+18%" },
@@ -119,8 +126,8 @@ export const projects: Project[] = [
     featured: false,
     gradient: ["#a855f7", "#ec4899"],
     links: [
-      { label: "Play", href: "https://example.com/typeflow" },
-      { label: "Source", href: "https://github.com/ToContactSaksham" },
+      { label: "Live demo", href: demoPath("typeflow") },
+      source("src/components/demos/typeflow"),
     ],
   },
   {
@@ -138,7 +145,10 @@ export const projects: Project[] = [
     year: 2022,
     featured: false,
     gradient: ["#14b8a6", "#6366f1"],
-    links: [{ label: "Source", href: "https://github.com/ToContactSaksham" }],
+    links: [
+      { label: "Live demo", href: demoPath("a11y-audit-kit") },
+      source("src/components/demos/a11y"),
+    ],
   },
 ];
 

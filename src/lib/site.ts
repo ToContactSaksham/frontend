@@ -7,12 +7,14 @@ export const site = {
   title: "Saksham — Frontend Engineer",
   description:
     "Portfolio of Saksham, a frontend engineer crafting fast, accessible, and delightful interfaces with React, Next.js, TypeScript, Tailwind CSS and REST APIs.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(
-    /\/$/,
-    "",
-  ),
+  /** Canonical production URL (Netlify). Override with NEXT_PUBLIC_SITE_URL. */
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://sakshamportfolio20.netlify.app"
+  ).replace(/\/$/, ""),
   /** GitHub account whose public activity is shown in the GitHub section. */
   githubUser: process.env.GITHUB_USERNAME ?? "ToContactSaksham",
+  /** Repository that contains this site and every project demo. */
+  repoUrl: "https://github.com/ToContactSaksham/frontend",
   keywords: [
     "Saksham",
     "frontend engineer",
@@ -37,3 +39,6 @@ export const navLinks = [
 ] as const;
 
 export type SectionId = (typeof navLinks)[number]["id"] | "home";
+
+/** Every project demo lives under this path on the same deployment. */
+export const demoPath = (slug: string) => `/demos/${slug}`;

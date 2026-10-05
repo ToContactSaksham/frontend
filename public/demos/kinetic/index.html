@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Kinetic — a scroll-driven launch site in pure HTML, CSS and JavaScript</title>
+  <meta name="description" content="A product-launch microsite built with no framework: scroll-driven animations, container queries, a canvas particle field and a few kilobytes of JavaScript.">
+  <link rel="icon" href="/icon" type="image/png">
+  <link rel="stylesheet" href="/demos/kinetic/styles.css">
+  <!-- Mark JS availability before first paint so reveal styles only apply when they can be undone. -->
+  <script>document.documentElement.classList.add("js")</script>
+  <script type="module" src="/demos/kinetic/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="back" href="/#projects" target="_top">&larr; Portfolio</a>
+    <span class="brand">Kinetic</span>
+    <span class="meta"><span id="fps">60</span> fps · <span id="js-size">—</span> JS</span>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="field" aria-hidden="true"></canvas>
+      <p class="eyebrow">Pure HTML · CSS · JavaScript</p>
+      <h1 id="hero-title" class="title">
+        <span class="word">Motion</span>
+        <span class="word">without</span>
+        <span class="word">a&nbsp;framework.</span>
+      </h1>
+      <p class="lede">A launch microsite that leans on the platform: scroll-driven animations, container queries, a canvas particle field and semantic markup. Zero dependencies, no build step.</p>
+      <a class="cta" href="#features">See how it moves <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section id="features" class="features" aria-labelledby="features-title">
+      <h2 id="features-title" class="reveal">Built on modern CSS</h2>
+      <p class="reveal sub">Everything below is native to the browser. No runtime, no polyfills.</p>
+      <div class="grid">
+        <article class="card reveal" style="--i:0"><span class="icon" aria-hidden="true">◐</span><h3>Scroll-driven animation</h3><p>Progress and bars ride <code>animation-timeline</code>, with an IntersectionObserver fallback.</p></article>
+        <article class="card reveal" style="--i:1"><span class="icon" aria-hidden="true">▦</span><h3>Container queries</h3><p>Components lay themselves out from their own width, not the viewport.</p></article>
+        <article class="card reveal" style="--i:2"><span class="icon" aria-hidden="true">◉</span><h3>Canvas particles</h3><p>Device-pixel aware, pointer-reactive, paused when the tab is hidden.</p></article>
+        <article class="card reveal" style="--i:3"><span class="icon" aria-hidden="true">◈</span><h3>Layers &amp; parallax</h3><p>Pointer position becomes custom properties; transforms do the rest.</p></article>
+        <article class="card reveal" style="--i:4"><span class="icon" aria-hidden="true">◎</span><h3>Reduced motion</h3><p>Every animation is gated behind <code>prefers-reduced-motion</code>.</p></article>
+        <article class="card reveal" style="--i:5"><span class="icon" aria-hidden="true">◆</span><h3>Tiny footprint</h3><p>HTML, CSS and JS together weigh less than most hero images.</p></article>
+      </div>
+    </section>
+
+    <section class="parallax" id="parallax" aria-labelledby="parallax-title">
+      <div class="layer l1" aria-hidden="true"></div>
+      <div class="layer l2" aria-hidden="true"></div>
+      <div class="layer l3" aria-hidden="true"></div>
+      <h2 id="parallax-title">Depth from the pointer,<br>not from a library.</h2>
+      <p>Move your cursor, or tilt your phone, to shift the layers.</p>
+    </section>
+
+    <section class="cq" aria-labelledby="cq-title">
+      <h2 id="cq-title" class="reveal">Container queries, live</h2>
+      <p class="reveal sub">Drag the slider: the card re-lays itself from its <em>own</em> width, not the page.</p>
+      <label class="range">
+        <span>Container width: <output id="cq-out" for="cq-range">720</output>px</span>
+        <input id="cq-range" type="range" min="280" max="960" value="720" step="10">
+      </label>
+      <div class="cq-wrap" id="cq-wrap">
+        <article class="product">
+          <div class="product-media" aria-hidden="true"></div>
+          <div class="product-body">
+            <p class="tag">New</p>
+            <h3>Kinetic Desk Lamp</h3>
+            <p>Adaptive warm-to-cool light with a gesture dimmer. Ships flat, assembles in two minutes.</p>
+            <div class="product-row"><strong>$149</strong><button type="button" class="btn" id="add">Add to cart</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="timeline" aria-labelledby="timeline-title">
+      <h2 id="timeline-title" class="reveal">Scroll-timeline progress</h2>
+      <p class="reveal sub">These bars fill as they enter the viewport. Pure CSS where supported, observer-driven elsewhere.</p>
+      <ul class="bars">
+        <li class="bar" style="--w:100%"><span>Lighthouse performance</span><span class="fill"></span><b>100</b></li>
+        <li class="bar" style="--w:100%"><span>Accessibility</span><span class="fill"></span><b>100</b></li>
+        <li class="bar" style="--w:100%"><span>Best practices</span><span class="fill"></span><b>100</b></li>
+        <li class="bar" style="--w:100%"><span>SEO</span><span class="fill"></span><b>100</b></li>
+        <li class="bar" style="--w:23%"><span>Transfer size (kB)</span><span class="fill"></span><b>23</b></li>
+      </ul>
+    </section>
+
+    <section class="outro" aria-labelledby="outro-title">
+      <h2 id="outro-title" class="reveal">That's the whole trick.</h2>
+      <p class="reveal sub">Semantic HTML, modern CSS, a little JavaScript, and respect for the user's preferences.</p>
+      <a class="cta reveal" href="/#projects" target="_top">Back to the portfolio</a>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Kinetic is a live demo for Saksham's portfolio ·
+    <a href="https://github.com/ToContactSaksham/frontend/tree/HEAD/public/demos/kinetic" target="_blank" rel="noopener noreferrer">View source</a>
+  </footer>
+</body>
+</html>

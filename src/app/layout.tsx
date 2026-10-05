@@ -7,10 +7,7 @@ import {
   themeInitScript,
 } from "@/components/providers/theme-provider";
 import { ToastProvider } from "@/components/providers/toast-provider";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
-import { CommandPalette } from "@/components/layout/command-palette";
 import { JsonLd } from "@/components/seo/json-ld";
 
 const geistSans = Geist({
@@ -88,10 +85,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ThemeProvider>
           <ToastProvider>
             <ScrollProgress />
-            <Navbar />
             {children}
-            <Footer />
-            <CommandPalette />
           </ToastProvider>
         </ThemeProvider>
         <JsonLd />

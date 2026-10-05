@@ -1,10 +1,12 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ArrowUpRight, Search, SlidersHorizontal, X } from "lucide-react";
+import { ArrowUpRight, Play, Search, SlidersHorizontal, X } from "lucide-react";
 import { useApi } from "@/hooks/use-api";
 import type { Paginated, Project, ProjectTag } from "@/lib/types";
+import { demoPath } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Badge } from "@/components/ui/badge";
@@ -266,6 +268,7 @@ export function Projects() {
                     {p.title.split(" ")[0]}
                   </span>
                 </div>
+                {/* Spacer so the absolutely positioned demo link never overlaps text */}
 
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="flex items-start justify-between gap-3 text-lg font-semibold leading-snug">
@@ -297,6 +300,14 @@ export function Projects() {
                   )}
                 </div>
               </button>
+              {/* Sibling of the card button (nested interactives are invalid HTML). */}
+              <Link
+                href={demoPath(p.slug)}
+                className="absolute right-5 top-[7.5rem] z-10 inline-flex h-8 items-center gap-1.5 rounded-full bg-black/35 px-3 text-xs font-medium text-white backdrop-blur transition hover:bg-black/55"
+                aria-label={`Open live demo of ${p.title}`}
+              >
+                <Play size={12} aria-hidden /> Live demo
+              </Link>
             </TiltCard>
           </Reveal>
         ))}
